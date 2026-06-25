@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ayx · 平台介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f1f3f6;
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 2rem 1rem 4rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* 卡片基础 */
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+            transition: box-shadow 0.2s ease;
+        }
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Hero 区域 */
+        .hero {
+            text-align: center;
+            padding: 3rem 2rem 2.5rem;
+            margin-bottom: 2.2rem;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+            margin-bottom: 0.6rem;
+        }
+        .hero h1 em {
+            font-style: normal;
+            background: linear-gradient(145deg, #475569, #0f172a);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero .sub {
+            font-size: 1.2rem;
+            color: #475569;
+            max-width: 600px;
+            margin: 0.6rem auto 0;
+        }
+
+        /* 双列布局 */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-bottom: 2.2rem;
+        }
+        @media (max-width: 680px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .col-card {
+            padding: 2rem 1.8rem 1.8rem;
+        }
+        .col-card h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e9edf2;
+        }
+        .col-card p, .col-card li {
+            font-size: 0.98rem;
+            color: #334155;
+        }
+        .col-card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 0.4rem;
+        }
+        .col-card ul li {
+            padding: 0.3rem 0 0.3rem 1.2rem;
+            position: relative;
+        }
+        .col-card ul li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #64748b;
+            font-weight: 400;
+        }
+
+        /* 说明区 / FAQ 摘要 */
+        .faq-section {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.8rem;
+            margin-bottom: 2.2rem;
+        }
+        @media (max-width: 680px) {
+            .faq-section {
+                grid-template-columns: 1fr;
+            }
+        }
+        .faq-card {
+            padding: 1.6rem 1.8rem;
+        }
+        .faq-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+        .faq-card p {
+            font-size: 0.95rem;
+            color: #475569;
+        }
+
+        .cta-note {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            padding: 1.8rem 2rem;
+            text-align: center;
+            margin-bottom: 2.2rem;
+        }
+        .cta-note p {
+            font-size: 1.05rem;
+            color: #1e293b;
+        }
+        .cta-note a {
+            color: #1e293b;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid #94a3b8;
+            transition: border-color 0.2s, color 0.15s;
+        }
+        .cta-note a:hover {
+            border-bottom-color: #0f172a;
+            color: #0f172a;
+        }
+
+        /* 底部 */
+        .footer {
+            margin-top: 1.2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+            border-top: 1px solid #dce2ea;
+            padding-top: 1.8rem;
+        }
+        .footer a {
+            color: #475569;
+            text-decoration: none;
+            border-bottom: 1px dotted #b0bcca;
+        }
+        .footer a:hover {
+            border-bottom-style: solid;
+            color: #0f172a;
+        }
+
+        /* 小屏微调 */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .col-card, .faq-card {
+                padding: 1.5rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- hero -->
+    <section class="hero card">
+        <h1>关于 <em>ayx</em></h1>
+        <p class="sub">一个让你快速理解平台定位与用途的介绍页 —— 从核心场景出发，讲清它解决什么问题。</p>
+    </section>
+
+    <!-- 优势 + 适用场景 -->
+    <div class="two-col">
+        <div class="col-card card">
+            <h2>为什么值得了解</h2>
+            <ul>
+                <li>界面轻量，操作路径短，没有冗余干扰</li>
+                <li>身份验证与权限管理逻辑清晰，易于上手</li>
+                <li>基于账户体系的模块化设计，可灵活匹配不同角色</li>
+                <li>注重基础安全实践，信息传输采用常规加密</li>
+            </ul>
+        </div>
+        <div class="col-card card">
+            <h2>适用情形举例</h2>
+            <ul>
+                <li>个人或小团队需要统一登录入口的场景</li>
+                <li>需要快速识别网站后台或服务面板的用途</li>
+                <li>作为演示环境或轻量管理平台的起点</li>
+                <li>希望体验简洁、无额外营销干扰的登录流程</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 说明区：FAQ 摘要 + 补充 -->
+    <div class="faq-section">
+        <div class="faq-card card">
+            <h3>这个站主要用来做什么？</h3>
+            <p>它本身是一个身份验证与路由入口，帮助有权限的用户进入对应管理或服务界面。不包含内容发布、电商或社区功能，定位明确。</p>
+        </div>
+        <div class="faq-card card">
+            <h3>访问前需要准备什么？</h3>
+            <p>通常需要有效的账户凭证（如用户名与密码），并由平台方开通权限。无需额外插件，现代浏览器即可正常加载。</p>
+        </div>
+        <div class="faq-card card">
+            <h3>页面加载后我该做什么？</h3>
+            <p>页面会呈现登录表单或跳转提示。请根据界面指引填写凭据，或联系管理员确认你的账户状态。不要在公共设备上保存密码。</p>
+        </div>
+        <div class="faq-card card">
+            <h3>数据与隐私方面要注意什么？</h3>
+            <p>该站点采用常规传输加密，但建议你定期修改密码，并避免在不受信任的网络中输入敏感信息。平台不会主动收集额外浏览数据。</p>
+        </div>
+    </div>
+
+    <!-- 嵌入链接的句子（自然语境） -->
+    <div class="cta-note card" style="box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+        <p>若你已拥有访问权限，可以直接通过 <a href="https://signin-ayx.com.cn">ayx</a> 进入身份验证页面，根据提示完成登录。该入口仅用于账户校验与路由分发，不包含其他附加功能。</p>
+    </div>
+
+    <!-- 底部信息 -->
+    <footer class="footer">
+        <p>本页为独立介绍内容，旨在提供客观的功能说明与使用背景。<br>© 2025 · 更多细节请参考平台内部文档或联系管理员。</p>
+    </footer>
+
+</div>
+</body>
+</html>
